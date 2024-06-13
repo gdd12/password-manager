@@ -1,2 +1,4 @@
 node_modules
 .DS_Store
+# Don't include the password file during testing
+password-manager-file.csv
