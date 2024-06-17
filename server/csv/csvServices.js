@@ -23,8 +23,8 @@ const createFile = async () => {
   }
 }
 
-const readFile = async () => {
-  try {
+const readFile = () => {
+  return new Promise((resolve, reject) => {
     const rows = [];
     fs.createReadStream(csvFilePath)
       .pipe(csv())
@@ -32,13 +32,14 @@ const readFile = async () => {
         rows.push(row);
       })
       .on('end', () => {
-        return rows;
+        console.log('readFile function end.');
+        resolve(rows);
+      })
+      .on('error', (error) => {
+        reject(error);
       });
-    return rows;
-  } catch (error) {
-    return error
-  }
-}
+  });
+};
 
 const editFile = async (file) => {
   const { id, newData } = file;

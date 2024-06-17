@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('config');
 const fs = require('node:fs');
@@ -14,6 +15,7 @@ const {
   }
 } = config
 
+Router.use(cors());
 Router.use(bodyParser.json());
 Router.use(csvFile)
 
