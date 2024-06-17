@@ -28,6 +28,7 @@ csvFile.get('/readFile', async (req, res) => {
 });
 
 csvFile.put('/editFile', async (req, res) => {
+  // There is no id since it is CSV file DB.
   const { id, newData } = req.body;
   if (!id || !newData) {
     return res.status(400).json({error: "Bad request"})

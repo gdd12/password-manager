@@ -12,6 +12,7 @@ const createFile = async () => {
       header: [
         { id: 'username', title: 'Username' },
         { id: 'password', title: 'Password' },
+        { id: 'company', title: 'Company'},
         { id: 'website', title: 'Website' },
         { id: 'text', title: 'Text' }
       ]
@@ -59,6 +60,7 @@ const editFile = async (file) => {
           header: [
             { id: 'username', title: 'Username' },
             { id: 'password', title: 'Password' },
+            { id: 'company', title: 'Company'},
             { id: 'website', title: 'Website' },
             { id: 'text', title: 'Text' }
           ]

@@ -41,29 +41,34 @@ const Passwords = () => {
   return (
     <div className='container'>
       <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table" border="2">
-        <TableHead>
-          <TableRow>
-            <TableCell>Website</TableCell>
-            <TableCell>Username</TableCell>
-            <TableCell>Password</TableCell>
-            <TableCell>Text</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {fileInfo.map((entry, index) => (
-            <TableRow key={index}>
-              <TableCell>{entry.Website}</TableCell>
-              <TableCell>{entry.Username}</TableCell>
-              <TableCell>{entry.Password}</TableCell>
-              <TableCell>{entry.Text}
-                <button style={{float:'right'}} onClick={() => {console.log('Edit', entry)}}>Edit</button>
-              </TableCell>
+        <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table" border="2">
+          <TableHead>
+            <TableRow>
+              <TableCell>Company</TableCell>
+              <TableCell>Username</TableCell>
+              <TableCell>Password</TableCell>
+              <TableCell>Text</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {fileInfo.map((entry, index) => (
+              <TableRow key={index}>
+                <TableCell>
+                  <a
+                    href={'http://' + entry.Website}
+                    rel="noreferrer"
+                    target='_blank'>{entry.Company}
+                  </a>
+                </TableCell>
+                <TableCell>{entry.Username}</TableCell>
+                <TableCell>{entry.Password}</TableCell>
+                <TableCell>{entry.Text}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <button style={{float:"right"}} onClick={() => {console.log('Add')}}>Add</button>
     </div>
   );
 };
