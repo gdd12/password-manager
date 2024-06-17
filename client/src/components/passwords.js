@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
 import { grabFileInformation } from '../api/apiService';
 
 const Passwords = () => {
@@ -33,18 +40,30 @@ const Passwords = () => {
 
   return (
     <div className='container'>
-      <table>
-        <tbody>
+      <TableContainer component={Paper}>
+      <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table" border="2">
+        <TableHead>
+          <TableRow>
+            <TableCell>Website</TableCell>
+            <TableCell>Username</TableCell>
+            <TableCell>Password</TableCell>
+            <TableCell>Text</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
           {fileInfo.map((entry, index) => (
-            <tr key={index}>
-              <td>{entry.Username}</td>
-              <td>{entry.Password}</td>
-              <td>{entry.Website}</td>
-              <td>{entry.Text}</td>
-            </tr>
+            <TableRow key={index}>
+              <TableCell>{entry.Website}</TableCell>
+              <TableCell>{entry.Username}</TableCell>
+              <TableCell>{entry.Password}</TableCell>
+              <TableCell>{entry.Text}
+                <button style={{float:'right'}} onClick={() => {console.log('Edit', entry)}}>Edit</button>
+              </TableCell>
+            </TableRow>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
+    </TableContainer>
     </div>
   );
 };
